@@ -10,9 +10,7 @@ let next = (k) => {
   else
     return k = 'x';
 };
-let reset=() =>{
-  arr=Array(9).fill(null)
-}
+
 const winner = () => {
   for (let i = 0; i < 3; i++) {
     if ((arr[i] === arr[i + 3]) && (arr[i + 3] === arr[i + 6]) && (arr[i + 6] !== null)) {
@@ -30,31 +28,49 @@ const winner = () => {
   return false;
 
 }
+
 grid.setAttribute('id', 'grid');
-for (let i = 0; i < 3; i++) {
+function createGrid(row,column){
+for (let i = 0; i < row; i++) {
   const row = document.createElement('div');
   row.setAttribute('id', 'row');
-  for (let j = 0; j < 3; j++) {
+  for (let j = 0; j < column; j++) {
     const cell = document.createElement('button');
     cell.setAttribute('class', 'cell');
     cell.setAttribute('id', pos);
     pos++;
-    cell.onclick = () => {
-      if (arr[cell.id] !== null) {
-        return;
-      }
-      cell.innerHTML = k;
-      arr[cell.id] = k;
-      if (winner() === true) {
-        alert('winner ');
-        return;
-      }
-      
-      k = next(k);
-    }
     row.appendChild(cell);
-
   }
   grid.append(row);
 }
 container.append(grid);
+}
+createGrid(3,3);
+
+const cells=grid.querySelectorAll('button');
+cells.forEach((cell)=>{
+  cell.addEventListener('click',()=>{
+    if (arr[cell.id] !== null) {
+      return;
+    }
+    if (winner() === true) {
+      alert('winner ');
+      return;
+    }
+    cell.innerHTML = k;
+    arr[cell.id] = k;
+    k = next(k);
+  })
+}
+)
+const resetButton=document.createElement('button');
+resetButton.innerHTML='Reset';
+resetButton.addEventListener('click',()=>{
+  arr=Array(9).fill(null);
+  cells.forEach((cell)=>{
+    cell.innerHTML='';
+  })
+}
+)
+grid.appendChild(resetButton);
+
