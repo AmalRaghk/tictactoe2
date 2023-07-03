@@ -53,12 +53,13 @@ cells.forEach((cell)=>{
     if (arr[cell.id] !== null) {
       return;
     }
+    arr[cell.id] = k;
     if (winner() === true) {
-      alert('winner ');
+      alert('winner '+k);
+      cell.innerHTML = k;
       return;
     }
     cell.innerHTML = k;
-    arr[cell.id] = k;
     k = next(k);
   })
 }
