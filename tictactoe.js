@@ -64,6 +64,7 @@ const reset=() => {
   cells.forEach((cell)=>{
     cell.innerHTML='';
     move='x';
+    cell.style.backgroundColor='#4078c0';
   })
 
 
@@ -76,6 +77,7 @@ cells.forEach((cell)=>{
     }
     arr[cell.id] = move;
     cell.innerHTML = move;
+    cell.style.backgroundColor='#6e5494'
     if (winner() === true) {
       alert('winner '+move);
       reset();
@@ -108,7 +110,7 @@ const chooseWord=()=>{
 const wordx=document.createElement('div');
 wordx.setAttribute('class','wordx');
 function printWords() {
-  let randomNos = Math.random() * 100;
+  let randomNos = Math.random() * 70;
   for (let i = 0; i < randomNos; i++) {
     const words = document.createElement('div');
     words.innerHTML = chooseWord();
