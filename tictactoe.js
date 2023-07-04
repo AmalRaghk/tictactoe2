@@ -107,6 +107,7 @@ const chooseWord=()=>{
   return 'o';
 
 }
+//create random words
 const wordx=document.createElement('div');
 wordx.setAttribute('class','wordx');
 function printWords() {
