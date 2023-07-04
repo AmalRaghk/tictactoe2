@@ -3,15 +3,15 @@ const grid = document.createElement('div');
 
 
 //initialize the global variables 
-move = 'x';
+move = 'X';
 pos = 0;
 let arr = Array(9).fill(null);
 //function for the next move
 let next = (move) => {
-  if (move == 'x')
-    return move= 'o';
+  if (move == 'X')
+    return move= 'O';
   else
-    return move= 'x';
+    return move= 'X';
 };
 
 
@@ -56,7 +56,7 @@ createGrid(3,3);
 const heading = document.createElement('h1');
 heading.textContent = 'Tic-Tac-Toe';
 container.insertBefore(heading, grid);
-heading.style.color='#6cc644'
+heading.style.color='white'
 //the reset function
 const cells=grid.querySelectorAll('button');
 const reset=() => {
@@ -79,7 +79,7 @@ cells.forEach((cell)=>{
     cell.innerHTML = move;
     cell.style.backgroundColor='#6e5494'
     if (winner() === true) {
-      alert('winner '+move);
+      alert('Winner is '+ move +' sorry  ' + next(move));
       reset();
       return
     }
