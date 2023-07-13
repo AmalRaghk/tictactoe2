@@ -3,7 +3,7 @@ const grid = document.createElement('div');
 
 
 //initialize the global variables 
-move = 'X';
+move = 'O';
 pos = 0;
 let arr = Array(9).fill(null);
 //function for the next move
@@ -75,6 +75,7 @@ cells.forEach((cell)=>{
     if (arr[cell.id] !== null) {
       return;
     }
+    move= next(move);
     arr[cell.id] = move;
     cell.innerHTML = move;
     cell.style.backgroundColor='#6e5494'
@@ -84,7 +85,7 @@ cells.forEach((cell)=>{
       return
     }
     
-    move= next(move);
+    
   })
 }
 )
